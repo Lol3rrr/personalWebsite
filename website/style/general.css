@@ -1,0 +1,115 @@
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  --navBarItemBack: #EAEAEA;
+  --navBarItemFontSize: 25px;
+  --navBarItemDropFontSize: 20px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h2 {
+  color: var(--title-color);
+  font-size: 35px;
+
+  font-family: 'Ubuntu', sans-serif;
+}
+
+p, li {
+  color: var(--text-color);
+  font-size: 20px;
+
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+ul {
+  text-align: left;
+  list-style-position: outside;
+  padding: 0;
+  margin: 0;
+}
+
+.subList {
+  margin-left: 21px;
+}
+
+.content {
+  height: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.brightDiv {
+  --background-color: #FCFCFC;
+  --title-color: #000000;
+  --text-color: #030303;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.translucentDarkDiv {
+  --background-color: rgba(0, 0, 0, 0.9);
+  --title-color: #F9F9F9;
+  --text-color: #F3F3F3;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 4%;
+}
+
+.translucentBrightDiv {
+  --background-color: rgba(255, 255, 255, 0.85);
+  --title-color: #060606;
+  --text-color: #0B0B0B;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.rotateDiv {
+  background-color: var(--background-color);
+  width: 120%;
+  position: relative;
+  left: -10%;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  transform: rotate(-5deg);
+}
+
+.subRotateDiv {
+  transform: rotate(5deg);
+}
+
+.contentDiv {
+  background-color: var(--background-color);
+
+  width: 40%;
+  padding-left: 30%;
+  padding-right: 30%;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+
+.pageHeader {
+  height: 50%;
+  width: 100%;
+
+  text-align: center;
+}
+
+.pageTitle {
+  margin: auto;
+  font-size: 50px;
+}
+
+.pageTitleDescription {
+  font-size: 30px;
+}
+
+.spacer {
+  height: 1%;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="background-image: url('/images/projects/projects-coding.png');">
+  <head>
+    <meta charset="utf-8">
+    <title> Projects </title>
+
+    <link rel="stylesheet" href="/style/navBar.css">
+    <link rel="stylesheet" href="/style/general.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="content">
+      <div class="navBar" id="navBar">
+        <a href="/" class="navBarItem"> Home </a>
+        <div class="navBarDropDown">
+          <button class="navBarDropBtn">Projects</button>
+          <div class="navBarDropContent">
+            <a href="/projects/"> Projects Overview </a>
+            <a href="/projects/c_webserver"> C-Webserver </a>
+            <a href="/projects/go_discordbot"> Go-DiscordBot </a>
+          </div>
+        </div>
+      </div>
+
+      <div style="overflow: hidden;">
+        <div class="brightDiv">
+          <div class="rotateDiv">
+            <div class="contentDiv">
+              <div class="subRotateDiv">
+                <div class="pageHeader">
+                  <h2 class="pageTitle"> Projects </h2>
+                  <p class="pageTitleDescription"> An Overview of all my Projects </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height: 10%"></div>
+      <div class="translucentDarkDiv">
+        <div class="contentDiv">
+          <h2><a href="/projects/go_discordbot"> Discord-Bot </a></h2>
+          <ul>
+            <li>Written in Go (golang)</li>
+            <li>Can send a random Post from Reddit to any Discord channel</li>
+            <li>Can play videos from youtube and some livestreams from twitch</li>
+            <li>Automatically syncs settings with the website</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="translucentBrightDiv">
+        <div class="contentDiv">
+          <h2><a href="/projects/c_webserver"> Webserver in C </a></h2>
+          <ul>
+            <li>Written in C (Ansi-C)</li>
+            <li>Can respond to simple GET requests</li>
+            <li>Automatically deals with differnt Problems (Accessing forbidden files, etc.)</li>
+            <li>Can simply be included in every other Code to create a webserver for the Project</li>
+            <li>Loads all the Files from the 'website' Directory placed in the same Directory as the executable</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

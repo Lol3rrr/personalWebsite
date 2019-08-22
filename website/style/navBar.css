@@ -1,0 +1,67 @@
+a {
+  color: inherit;
+  text-decoration: inherit;
+
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.navBar {
+  width: 100%;
+  display: block;
+  overflow: auto;
+
+  background-color: #F0F0F0;
+}
+
+.navBarItem {
+  background-color: var(--navBarItemBack);
+
+  float: left;
+  font-size: var(--navBarItemFontSize);
+  padding: 5px;
+  padding-bottom: 4px;
+}
+
+.navBarDropDown {
+  float: left;
+  overflow: hidden;
+}
+
+.navBarDropDown .navBarDropBtn {
+  font-size: var(--navBarItemFontSize);
+  border: none;
+  outline: none;
+  padding: 5px;
+  background-color: var(--navBarItemBack);
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.navBarDropContent {
+  display: none;
+  position: absolute;
+  background-color: var(--navBarItemBack);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.navBarDropContent a {
+  font-size: var(--navBarItemDropFontSize);
+  float: none;
+  color: black;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.navBarDropContent a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.navBarDropDown:hover .navBarDropContent {
+  display: block;
+}

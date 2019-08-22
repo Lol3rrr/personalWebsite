@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="background-image: url('/images/projects/c-http-server-coding.png');">
+  <head>
+    <meta charset="utf-8">
+    <title>C-Webserver - Projects</title>
+
+    <link rel="stylesheet" href="/style/navBar.css">
+    <link rel="stylesheet" href="/style/general.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="content">
+      <div class="navBar" id="navBar">
+        <a href="/" class="navBarItem"> Home </a>
+        <div class="navBarDropDown">
+          <button class="navBarDropBtn">Projects</button>
+          <div class="navBarDropContent">
+            <a href="/projects/"> Projects Overview </a>
+            <a href="/projects/c_webserver"> C-Webserver </a>
+            <a href="/projects/go_discordbot"> Go-DiscordBot </a>
+          </div>
+        </div>
+      </div>
+
+      <div style="overflow: hidden;">
+        <div class="brightDiv">
+          <div class="rotateDiv">
+            <div class="contentDiv">
+              <div class="subRotateDiv">
+                <div class="pageHeader">
+                  <h2 class="pageTitle"> Webserver in C </h2>
+                  <p class="pageTitleDescription"> A HTTP-Server completly written in ANSI-C </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height: 10%"></div>
+      <div class="translucentDarkDiv">
+        <div class="contentDiv">
+          <h2> Features </h2>
+          <ul>
+            <li>Responds to GET requests</li>
+            <li>Port can be choosen before starting the Program</li>
+            <li>Automatically adds the '.html' extension if no extension is given</li>
+            <li>Automatically uses the index.html file in the folder if path ends in '/'</li>
+            <li>Has optional Debug output in case of a problem</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="translucentBrightDiv">
+        <div class="contentDiv">
+          <h2> Plans </h2>
+          <ul>
+            <li>Add more configuration options</li>
+            <li>Implement the Cache header from the HTTP/1.1 Standard</li>
+            <li>Implement the gzip or deflate Compression</li>
+            <li>Implement a local Cache for files to improve speeds</li>
+            <li>Create some sort of documentation for it</li>
+          </ul>
+          <p>In short: Implement the whole HTTP/1.1 Standard and some extras for performance</p>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="translucentDarkDiv">
+        <div class="contentDiv">
+          <h2> Methods used </h2>
+          <ul>
+            <li>Structs</li>
+            <li>Single Linked lists</li>
+            <li>Extensive memory managment (malloc/free)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="translucentBrightDiv">
+        <div class="contentDiv">
+          <h2> Github </h2>
+          <p>
+            All the Code can be found on github
+            <br>
+            Feel free to use it or commit changes
+            <br>
+            <a href="https://github.com/Lol3rrr/http-server" target="_blank"> Github Repo </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
