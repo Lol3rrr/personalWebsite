@@ -4,29 +4,13 @@
     <meta charset="utf-8">
     <title>C-Webserver - Projects</title>
 
-    <link rel="stylesheet" href="/style/navBar.css">
-    <link rel="stylesheet" href="/style/general.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <--include path="/templates/generalHead.html"/>
 
     <meta name="description" content="The Project Site for my HTTP-Server written in C">
   </head>
   <body>
     <div class="content">
-      <div class="navBar" id="navBar">
-        <a href="/" class="navBarItem"> Home </a>
-        <div class="navBarDropDown">
-          <button class="navBarDropBtn">Projects</button>
-          <div class="navBarDropContent">
-            <a href="/projects/"> Projects Overview </a>
-            <a href="/projects/c_webserver"> C-Webserver </a>
-            <a href="/projects/go_discordbot"> Go-DiscordBot </a>
-          </div>
-        </div>
-      </div>
+      <--include path="/templates/navBar.html"/>
 
       <div style="overflow: hidden;">
         <div class="brightDiv">
