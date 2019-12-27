@@ -1,4 +1,5 @@
 .git
 Dockerfile
-
-webserver.out
+*.out
+*.md
+makefile
