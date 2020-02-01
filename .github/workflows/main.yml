@@ -14,7 +14,6 @@ jobs:
     - name: Deploy to production
       if: contains(github.ref, 'master')
       run: |
-        apt-get -qq update
         'which ssh-agent || ( apt-get install -qq openssh-client )'
         eval $(ssh-agent -s)
         ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
