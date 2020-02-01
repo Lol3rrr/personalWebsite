@@ -13,8 +13,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Deploy to production
       if: contains(github.ref, 'master')
-      run: |
-        ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
-        mkdir -p ~/.ssh
-        '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-        ssh root@lol3r.net "docker pull lol3r/personal_site:latest && cd personal_compose/ && docker-compose up -d && exit"
+      uses: appleboy/ssh-action@master
+      with:
+        host: lol3r.net
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: docker pull lol3r/personal_site && cd personal_compose/ && docker-compose up -d
