@@ -4,8 +4,8 @@ html, body {
   margin: 0;
 
   --navBarItemBack: #EAEAEA;
-  --navBarItemFontSize: 25px;
-  --navBarItemDropFontSize: 20px;
+  --navBarItemFontSize: calc(14px + 1.3vmin);
+  --navBarItemDropFontSize: calc(12px + 1vmin);
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,14 +24,14 @@ canvas {
 
 h2 {
   color: var(--title-color);
-  font-size: 35px;
+  font-size: calc(20px + 2vmin);
 
   font-family: 'Ubuntu', sans-serif;
 }
 
 p, li {
   color: var(--text-color);
-  font-size: 20px;
+  font-size: calc(14px + 0.75vmin);
 
   font-family: 'Lexend Deca', sans-serif;
 }
@@ -44,7 +44,7 @@ ul {
 }
 
 .subList {
-  margin-left: 21px;
+  margin-left: 5%;
 }
 
 .content {
@@ -99,11 +99,11 @@ ul {
 .contentDiv {
   background-color: var(--background-color);
 
-  width: 40%;
-  padding-left: 30%;
-  padding-right: 30%;
-  padding-top: 1%;
-  padding-bottom: 2%;
+  /*width: 40%;*/
+  padding-left: 20vw;
+  padding-right: 20vw;
+  padding-top: 2vmin;
+  padding-bottom: 6vmin;
 }
 
 .pageHeader {
@@ -115,11 +115,11 @@ ul {
 
 .pageTitle {
   margin: auto;
-  font-size: 50px;
+  font-size: calc(40px + 1.5vmin);
 }
 
 .pageTitleDescription {
-  font-size: 30px;
+  font-size: calc(20px + 1.5vmin);
 }
 
 .spacer {
