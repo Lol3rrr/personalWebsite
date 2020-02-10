@@ -1,0 +1,22 @@
+name: Publish Docker
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build and Publish Image
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: lol3r/personal_site
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Deploy to production
+      if: contains(github.ref, 'master')
+      uses: appleboy/ssh-action@master
+      with:
+        host: lol3r.net
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: docker pull lol3r/personal_site && cd personal_compose/ && docker-compose up -d
