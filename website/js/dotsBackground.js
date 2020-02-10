@@ -86,7 +86,6 @@ function Particle(x , y) {
     ctx.fillStyle = this.color;
     ctx.fill();
   }
-
 }
 
 function connectDots(p1 , p2) {
@@ -114,7 +113,6 @@ function loop() {
   for(var i = 0; i < p.length; i++) {
     p[i].show();
     p[i].move();
-
 
     connectDots(p[i],m);
     for(var j = 0; j < p.length; j++) {

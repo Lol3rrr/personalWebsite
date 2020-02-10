@@ -12,6 +12,15 @@ jobs:
           mkdir webp
           tar -xvzf libwebp-1.1.0-rc2-linux-x86-64.tar.gz -C webp
           for file in website/images/projects/*; do webp/libwebp-1.1.0-rc2-linux-x86-64/bin/cwebp -q 80 "$file" -o "${file%.*}.webp"; done
+      - name: Setup node js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13
+      - name: Install uglifyjs
+        run: npm install uglify-es -g
+      - name: minify scripts
+        run: |
+          uglifyjs website/js/dotsBackground.js --compress --mangle --output website/js/dotsBackground.js
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
