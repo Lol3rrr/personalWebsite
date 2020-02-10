@@ -3,6 +3,7 @@
   font-family: 'Lexend Deca';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('/fonts/lexend-deca-v1-latin-regular.eot'); /* IE9 Compat Modes */
   src: local('Lexend Deca Regular'), local('LexendDeca-Regular'),
        url('/fonts/lexend-deca-v1-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -16,6 +17,7 @@
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('/fonts/ubuntu-v14-latin-regular.eot'); /* IE9 Compat Modes */
   src: local('Ubuntu Regular'), local('Ubuntu-Regular'),
        url('/fonts/ubuntu-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */

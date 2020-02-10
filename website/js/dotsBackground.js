@@ -1,15 +1,23 @@
-var c = document.getElementById('dotsCanvas');
-var ctx = c.getContext('2d');
-var w = window.innerWidth;
-var h = window.innerHeight;
-var m = {
+const c = document.getElementById('dotsCanvas');
+let ctx = c.getContext('2d');
+let w = window.innerWidth;
+let h = window.innerHeight;
+let m = {
   x : 0,
   y : 0
 };
 c.width = w;
 c.height = h;
 
-var cdist = 50; //connect distance
+let cdist = 50; //connect distance
+let p = [];
+let cnt;
+
+function calcCount() {
+  cnt = (w / 60) * (h / 60);
+}
+
+calcCount();
 
 function updateBackground() {
   let refresh = false;
@@ -20,6 +28,8 @@ function updateBackground() {
   if (c.width != w || c.height != h) {
     c.width = w;
     c.height = h;
+
+    calcCount();
 
     refresh = true;
   }
@@ -34,17 +44,6 @@ function drawBG(clr) {
   ctx.fillStyle = clr
   ctx.fillRect(0,0,w,h);
 }
-
-function removeParticle(p , i) {
-  window.onkeydown = function(e) {
-    if(e.keyCode == 32) {
-      p.splice(i , 1);
-    }
-  }
-}
-
-
-var p = [] , cnt = 350;
 
 function fillParticleList() {
   for (var i = 0; i < cnt; i++) {
@@ -115,7 +114,6 @@ function loop() {
   for(var i = 0; i < p.length; i++) {
     p[i].show();
     p[i].move();
-    removeParticle(p , 1);
 
 
     connectDots(p[i],m);

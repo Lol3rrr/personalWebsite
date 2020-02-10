@@ -1,22 +1,43 @@
 name: Publish Docker
 on: [push]
 jobs:
-  build:
+  minify:
+    name: Minify images
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Build and Publish Image
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: lol3r/personal_site
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Deploy to production
-      if: contains(github.ref, 'master')
-      uses: appleboy/ssh-action@master
-      with:
-        host: lol3r.net
-        username: root
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: 22
-        script: docker pull lol3r/personal_site && cd personal_compose/ && docker-compose up -d
+      - uses: actions/checkout@master
+      - name: Download and use webp converter
+        run: |
+          wget https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.1.0-rc2-linux-x86-64.tar.gz
+          tar -xvzf libwebp-1.1.0-rc2-linux-x86-64.tar.gz -C webp
+          for file in images/*; do webp/bin/cwebp -q 80 "$file" -o "${file%.*}.webp"; done
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: website
+          path: website/
+
+  build:
+    runs-on: ubuntu-latest
+    needs.: minify
+    steps:
+      - uses: actions/checkout@master
+      - name: Download artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: website
+      - name: Build and Publish Image
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: lol3r/personal_site
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Deploy to production
+        if: contains(github.ref, 'master')
+        uses: appleboy/ssh-action@master
+        with:
+          host: lol3r.net
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: docker pull lol3r/personal_site && cd personal_compose/ && docker-compose up -d
