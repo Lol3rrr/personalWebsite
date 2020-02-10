@@ -27,8 +27,8 @@ jobs:
           npm install postcss-cli --global
       - name: Minify css
         run: |
-          postcss website/style/general.css > website/style/general.css
-          postcss website/style/navBar.css > website/style/navBar.css
+          postcss website/style/general.css -r true
+          postcss website/style/navBar.css -r true
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
