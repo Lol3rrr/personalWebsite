@@ -18,9 +18,17 @@ jobs:
           node-version: 13
       - name: Install uglifyjs
         run: npm install uglify-es -g
-      - name: minify scripts
+      - name: Minify js-scripts
         run: |
           uglifyjs website/js/dotsBackground.js --compress --mangle --output website/js/dotsBackground.js
+      - name: Install cssnano and PostCSS
+        run: |
+          npm install cssnano --save-dev
+          npm install postcss-cli --global
+      - name: Minify css
+        run: |
+          postcss website/style/general.css > website/style/general.css
+          postcss website/style/navBar.css > website/style/navBar.css
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
