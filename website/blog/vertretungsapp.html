@@ -86,6 +86,13 @@
           <p>
             The now primary frontend of my app is a rather simple pwa, which is completly written with vanilla html, css and js and primarily made for a good mobile expierence
             as most of the time it will be used from someone's phone before or during school. <br>
+            <br>
+            To load the courses it makes a pretty simple request to my backend and then stores the response as encoded json data in a cache.
+            This is useful as it allows the pwa to temporary save the data even between restarts. <br>
+            <br>
+            The only piece of logic that is actually in the frontend itself, is to save/load/modify any sort of user settings and also the filters, which allow the user
+            to apply different sort of filters to the courses that get displayed, like only show courses for their grade or their own courses, which is probably one of
+            the biggest improvements over the schools version.
           </p>
         </div>
         <div class="">
