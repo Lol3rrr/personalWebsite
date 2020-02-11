@@ -1,0 +1,19 @@
+.blogContent {
+  width: 70%;
+  padding: 1vh 15% 1vh 15%;
+  background-color: #FCFCFC;
+  margin: auto;
+  text-align: left;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.blogContent p {
+  line-height: 25px;
+}

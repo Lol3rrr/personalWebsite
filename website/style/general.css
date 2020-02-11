@@ -59,6 +59,13 @@ h2 {
   font-family: 'Ubuntu', sans-serif;
 }
 
+h3 {
+  color: var(--title-color);
+  font-size: calc(16px + 2vmin);
+
+  font-family: 'Ubuntu', sans-serif;
+}
+
 p, li {
   color: var(--text-color);
   font-size: calc(14px + 0.75vmin);

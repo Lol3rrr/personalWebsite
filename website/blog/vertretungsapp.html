@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="background-color: #222;">
+  <head>
+    <meta charset="utf-8">
+    <title>Blog - 'Vertretungsapp'</title>
+
+    <--include path="/templates/generalHead.html"/>
+    <link rel="stylesheet" href="/style/blog.css" media="nope!" onload="this.media='all'">
+
+    <meta name="description" content="The story behind my very own 'Vertretungsapp'">
+  </head>
+  <body>
+    <div class="content">
+      <--include path="/templates/navBar.html"/>
+
+      <div style="overflow: hidden;">
+        <div class="brightDiv">
+          <div class="rotateDiv">
+            <div class="contentDiv">
+              <div class="subRotateDiv">
+                <div class="pageHeader">
+                  <h2 class="pageTitle"> My own 'Vertretungsapp' </h2>
+                  <p class="pageTitleDescription"> How I created a better version of my schools app </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blogContent">
+        <div class="">
+          <h2>How it started</h2>
+          <p>
+            It all slowly started with me getting annoyed at the app that our school provided.
+            I should clarify first, my school provides a simple app that allows every student to see when a teacher is sick or in general won't be in school that day,
+            and thus which classes will dropped that day. This app is built on microsofts powerapps and it was at least something, but  it used an unjustified amount of
+            mobile data compared to it's abilities and also was REALLY slow. <br>
+            <br>
+            So over the summer holidays it came to my mind, that since I had a lot of spare time and finally found a problem that affects more people than just myself,
+            I should try to build a better app. There was just the problem that my school doesn't really provide a way to access this data.
+          </p>
+        </div>
+        <div class="">
+          <h2>Reverse Engineering</h2>
+          <h3>Loading the Data</h3>
+          <p>
+            I started by looking at the web version of the app and taking a closer look at all the requests that it makes.
+            Finding the request related to loading data was rather simple as there was a refresh button in the app, that would fetch the newest data available.
+            <br>
+            I then took a closer look at the request in question and basically copied the whole request into postman to make it easier to test things out, like
+            what Headers and other Data is really needed and what I can leave out when implementing it in code.
+            This didn't take that long as it was just a bunch of trial and error.
+            <br>
+            I then simply wrote some golang code to make the exact same request and made some parts of it as variables, like the sessionID, and was then ready to
+            move over to the next step, which was finding out how to keep the current session up to date or get a new one once the other one has expired.
+            <br>
+          </p>
+          <h3>Staying logged in</h3>
+          <p>
+            To find out how the app manages the sessions I started by looking closer at what session related information was send, when requesting any data.
+            During this I found out that all it needed to authenticate the session was the sessionID, so my next goal was to find out where the client receives
+            the session id.
+            <br>
+            After some looking around and logging in and out multiple times I found out that the main way it got the session id is by sending x amounts of refresh tokens
+            and another refresh related piece of data to a specific endpoint, which would then return a 'Set-Cookie' header which contains the new refresh tokens. <br>
+            After the client receives the new, now definetly valid, refresh Tokens it uses them to send a very similiar request, which only has some fields set differently
+            to receive a valid sessionID
+          </p>
+        </div>
+        <div class="">
+          <h2>Overall structure of my app</h2>
+          <h3>Backend</h3>
+          <p>
+            As I wanted my app to be faster than the schools' app and to use less mobile data, I knew from the beginning that I would need my own small backend for this.
+            The job of it would be rather simple, fetch the data from the schools' servers, extract the important information, turn it into a json string and compress it to
+            use as little data as possible. <br>
+            I also wanted this to be as fast and efficient as possible, as I'm still a 'nerd' and like to optimize this sort of stuff, so I decided that I would create
+            the response once the data has been loaded/refreshed and only store the ready to be sent response. <br>
+            <br>
+            This approach also makes it relatively easy to develop the actual front-end part of this app, as there is no real logic that I need to update in the actual app or
+            website the user will use. This was rather important to me as it can easily happen, that they make a small change to, for example the URL of a specific endpoint
+            so I need to be able to quickly update the loading logic. <br>
+          </p>
+          <h3>Frontend</h3>
+          <p>
+            The now primary frontend of my app is a rather simple pwa, which is completly written with vanilla html, css and js and primarily made for a good mobile expierence
+            as most of the time it will be used from someone's phone before or during school. <br>
+            <br>
+            To load the courses it makes a pretty simple request to my backend and then stores the response as encoded json data in a cache.
+            This is useful as it allows the pwa to temporary save the data even between restarts. <br>
+            <br>
+            The only piece of logic that is actually in the frontend itself, is to save/load/modify any sort of user settings and also the filters, which allow the user
+            to apply different sort of filters to the courses that get displayed, like only show courses for their grade or their own courses, which is probably one of
+            the biggest improvements over the schools version.
+          </p>
+        </div>
+        <div class="">
+          <h2>Conclusion</h2>
+          <p>
+            The app turned out way better than I could have imagined when I started working on it and it has taught me a lot about how to create reliable software, as I can't
+            allow any errors to happen in production, as they could mean that people thing their class will be dropped that day but in reality it isn't. It also helped me to
+            understand how to use CI/CD techniques properly and how to deploy something in a better way than just loading everything onto a server and doing everything by
+            hand. <br>
+            <br>
+            In the future I will also write a post about how I host my personal site and all other things I have running and how I manage everything, where I will go into more
+            detail about the specific decissions I made and why.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
