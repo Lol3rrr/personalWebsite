@@ -1,5 +1,5 @@
 name: Publish Docker
-on: [push]
+on: [push, repository_dispatch]
 jobs:
   minify:
     name: Minify images
