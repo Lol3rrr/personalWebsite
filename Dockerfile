@@ -1,4 +1,4 @@
-FROM lol3r/c-http-server:latest-prometheus
+FROM lol3r/c-http-server:latest
 
 WORKDIR /root/http-server
 
