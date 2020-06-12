@@ -12,6 +12,8 @@ jobs:
           mkdir webp
           tar -xvzf libwebp-1.1.0-rc2-linux-x86-64.tar.gz -C webp
           for file in website/images/projects/*; do webp/libwebp-1.1.0-rc2-linux-x86-64/bin/cwebp -q 60 "$file" -o "${file%.*}.webp"; done
+          rm -rf website/images/projects/*.png
+          rm -rf website/templates/
       - name: Setup node js
         uses: actions/setup-node@v1
         with:
