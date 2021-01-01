@@ -26,6 +26,7 @@ jobs:
       - name: Install cssnano and PostCSS
         run: |
           npm install cssnano --save-dev
+          npm install postcss --global
           npm install postcss-cli --global
       - name: Minify css
         run: |
