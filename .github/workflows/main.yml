@@ -26,6 +26,7 @@ jobs:
       - name: Install cssnano and PostCSS
         run: |
           npm install cssnano --save-dev
+          npm install postcss --global
           npm install postcss-cli --global
       - name: Minify css
         run: |
@@ -40,10 +41,12 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: testing
+    needs: minify
     if: contains(github.ref, 'master')
     steps:
       - uses: actions/checkout@v2
+      - name: Download artifacts
+        uses: actions/download-artifact@v1
       - name: Docker meta
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
